@@ -1,3 +1,9 @@
+# Lighting
+
+This repository tracks any scripts / utilities in use for the lighting operator at ICF Hamburg.
+
+Most prominently, this started with a system that allows to connect any MIDI controller to a Windows Host and use this to control about anything using Companion + AutoHotKey. But it also allows to use the same MIDI device in multiple active programs in Windows, which is not possible by default.
+
 # Dependencies
 
 - AutoHotkey (AHK) >=2.0.10: https://www.autohotkey.com/
