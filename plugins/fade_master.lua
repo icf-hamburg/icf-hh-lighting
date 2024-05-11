@@ -235,6 +235,7 @@ local function Main(display_handle, argument)
             local interval = (distance * tick) / faderTime
 
 
+            -- Printf("Fader start: " .. tostring(faderStart) .. ". Fader end: " .. tostring(faderEnd))
             local dimUp = faderEnd > faderStart
             local executeFadeLoop = not (dimUp and dimOnly)
             -- Printf("Dim Only: " .. tostring(dimOnly) .. ". Execute fade loop: " .. tostring(executeFadeLoop))  -- Debug output
@@ -253,9 +254,9 @@ local function Main(display_handle, argument)
 
                 faderOptions.value = faderEnd
                 execObject:SetFader(faderOptions)
+            else
+                Printf("Fade Master " .. gVarName .. " lower than faderEnd. This is dimOnly mode.")
             end
-        else
-            Printf("Fade Master " .. gVarName .. " lower than target")
         end
 
         -- End momement session
