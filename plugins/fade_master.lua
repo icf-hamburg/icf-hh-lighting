@@ -55,6 +55,7 @@ local function Main (display_handle, argument)
     local destExec          -- the executor on the page
     local destSeq           -- the sequence
     local faderEnd          -- the end value for the fader
+    local dimOnly = false   -- boolean to control that the fader only goes down
     local faderTime = 0     -- the time to run
     local execObject = nil
     local v = UserVars()
@@ -65,13 +66,14 @@ local function Main (display_handle, argument)
     if argument == nil then
         -- ask through dialog
         local messageBoxInputs = {
-            "Page.Exec # or\nSequence #",
-            "Level (%)",
-            "Time (S)"
+            "01 - Page.Exec # or\nSequence #",
+            "02 - Level (%)",
+            "03 - Time (S)",
+            "04 - Dim Only (`true`/`1` to enable. Disabled otherwise)"
         }
 
         local messageBoxOptions = {
-            title="Fade Master Options",
+            title="Fade Master Options 123",
             message="",
             commands = {
                 {value=0, name="Cancel"},
@@ -80,7 +82,8 @@ local function Main (display_handle, argument)
             inputs = {
                 {name=messageBoxInputs[1], vkPlugin="TextInputNumOnlyRange"},
                 {name=messageBoxInputs[2], vkPlugin="TextInputNumOnlyRange"},
-                {name=messageBoxInputs[3], vkPlugin="TextInputNumOnlyRange"}
+                {name=messageBoxInputs[3], vkPlugin="TextInputNumOnlyRange"},
+                {name=messageBoxInputs[4], vkPlugin="TextInputNumOnlyRange"}
             }
         }
         local result = MessageBox(messageBoxOptions)
@@ -103,6 +106,7 @@ local function Main (display_handle, argument)
 
         faderEnd = result.inputs[messageBoxInputs[2]]
         faderTime = result.inputs[messageBoxInputs[3]]
+        dimOnly = result.inputs[messageBoxInputs[4]]
 
     elseif #arguments == 3 then
         -- [1]page/seq [2]level [3]time
@@ -121,7 +125,7 @@ local function Main (display_handle, argument)
             ErrPrintf("Incorrect Sequence/Page Identifier")
             return
         end
-    elseif #arguments == 4 then
+    elseif #arguments == 4 or #arguments == 5 then
         -- [1]"Page"/"Seq" [2]page/seqID [3]level [4]time
         faderEnd = tonumber(arguments[3])
         faderTime = tonumber(arguments[4])
@@ -140,9 +144,11 @@ local function Main (display_handle, argument)
                 return
             end
         end
+
+        dimOnly = Drt.toboolean(arguments[5])
     else
         ErrPrintf("Incorrect number of arguments")
-        ErrPrintf("Plugin \"Fade Master\" \"<Page|Sequence>, <Page#.Executor# | Sequence#>, <Level>, <Seconds> \"")
+        ErrPrintf("Plugin \"Fade Master\" \"<Page|Sequence>, <Page#.Executor# | Sequence#>, <Level>, <Seconds>, <DimOnly> \"")
         return
     end
 
@@ -225,20 +231,32 @@ local function Main (display_handle, argument)
                 Printf("Running Fade Master on Page %d.%d for %d Seconds. To abort - DeleteUserVariable \"%s\"", destPage, destExec, faderTime, gVarName)
             end
             local interval = (distance * tick)/faderTime
-            repeat
-                local faderCurrent = execObject:GetFader(faderOptions)
-                faderOptions.value = faderCurrent - interval
+
+
+            local dimUp = faderEnd > faderStart
+            local executeFadeLoop = not (dimUp and dimOnly)
+            -- Printf("Dim Only: " .. tostring(dimOnly) .. ". Execute fade loop: " .. tostring(executeFadeLoop))  -- Debug output
+
+            if executeFadeLoop then
+
+                repeat
+                    local faderCurrent = execObject:GetFader(faderOptions)
+                    faderOptions.value = faderCurrent - interval
+                    execObject:SetFader(faderOptions)
+                    coroutine.yield(tick)
+                    if GetVar(v, gVarName) == nil then
+                        Printf("Exitting ".. gVarName .. " due to Variable Deletion")
+                        return
+                    end
+                until math.abs(faderOptions.value - faderEnd) <= math.abs(interval)
+
+                faderOptions.value = faderEnd
                 execObject:SetFader(faderOptions)
-                coroutine.yield(tick)
-                if GetVar(v, gVarName) == nil then
-                    Printf("Exitting ".. gVarName .. " due to Variable Deletion")
-                    return
-                end
-            until math.abs(faderOptions.value - faderEnd) <= math.abs(interval)
             end
 
-            faderOptions.value = faderEnd
-            execObject:SetFader(faderOptions)
+            else
+                Printf("Fade Master ".. gVarName .." lower than target")
+            end
 
         -- End momement session
         DelVar(v, gVarName)
