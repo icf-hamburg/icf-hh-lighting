@@ -26,18 +26,18 @@ SOFTWARE.
 
 
 -- ****************************************************************
--- speed up global functions, by creating local cache 
+-- speed up global functions, by creating local cache
 -- this can be very important for high speed plugins
 -- caring about performance is imperative for plugins with execute function
 -- ****************************************************************
 
-local F=string.format;
-local E=Echo;
+local F = string.format;
+local E = Echo;
 
-local pluginName = select(1,...);
-local componentName = select(2,...);
-local signalTable = select(3,...);
-local my_handle = select(4,...);
+local pluginName = select(1, ...);
+local componentName = select(2, ...);
+local signalTable = select(3, ...);
+local my_handle = select(4, ...);
 
 -- local functions
 --local
@@ -45,18 +45,18 @@ local my_handle = select(4,...);
 -- ****************************************************************
 -- plugin main entry point
 -- ****************************************************************
-local function Main (display_handle, argument)
+local function Main(display_handle, argument)
     local arguments = Drt.split(argument, ",")
-    local tick = 1/30       -- updates / second
-    local MAXTIME = 3600.0  -- the max number of seconds
-    local MAXPOOL = 9999    -- the max number of pool items
-    local op = ""           -- the object we are operating on
-    local destPage          -- the page asked for
-    local destExec          -- the executor on the page
-    local destSeq           -- the sequence
-    local faderEnd          -- the end value for the fader
-    local dimOnly = false   -- boolean to control that the fader only goes down
-    local faderTime = 0     -- the time to run
+    local tick = 1 / 30    -- updates / second
+    local MAXTIME = 3600.0 -- the max number of seconds
+    local MAXPOOL = 9999   -- the max number of pool items
+    local op = ""          -- the object we are operating on
+    local destPage         -- the page asked for
+    local destExec         -- the executor on the page
+    local destSeq          -- the sequence
+    local faderEnd         -- the end value for the fader
+    local dimOnly = false  -- boolean to control that the fader only goes down
+    local faderTime = 0    -- the time to run
     local execObject = nil
     local v = UserVars()
     local gVarName = ""
@@ -73,17 +73,17 @@ local function Main (display_handle, argument)
         }
 
         local messageBoxOptions = {
-            title="Fade Master Options 123",
-            message="",
+            title = "Fade Master Options 123",
+            message = "",
             commands = {
-                {value=0, name="Cancel"},
-                {value=1, name="OK"}
+                { value = 0, name = "Cancel" },
+                { value = 1, name = "OK" }
             },
             inputs = {
-                {name=messageBoxInputs[1], vkPlugin="TextInputNumOnlyRange"},
-                {name=messageBoxInputs[2], vkPlugin="TextInputNumOnlyRange"},
-                {name=messageBoxInputs[3], vkPlugin="TextInputNumOnlyRange"},
-                {name=messageBoxInputs[4], vkPlugin="TextInputNumOnlyRange"}
+                { name = messageBoxInputs[1], vkPlugin = "TextInputNumOnlyRange" },
+                { name = messageBoxInputs[2], vkPlugin = "TextInputNumOnlyRange" },
+                { name = messageBoxInputs[3], vkPlugin = "TextInputNumOnlyRange" },
+                { name = messageBoxInputs[4], vkPlugin = "TextInputNumOnlyRange" }
             }
         }
         local result = MessageBox(messageBoxOptions)
@@ -107,7 +107,6 @@ local function Main (display_handle, argument)
         faderEnd = result.inputs[messageBoxInputs[2]]
         faderTime = result.inputs[messageBoxInputs[3]]
         dimOnly = result.inputs[messageBoxInputs[4]]
-
     elseif #arguments == 3 then
         -- [1]page/seq [2]level [3]time
         faderEnd = tonumber(arguments[2])
@@ -130,10 +129,10 @@ local function Main (display_handle, argument)
         faderEnd = tonumber(arguments[3])
         faderTime = tonumber(arguments[4])
 
-        if string.lower(arguments[1]):sub(1, 3) == "seq" then       -- Operate on a Sequence
+        if string.lower(arguments[1]):sub(1, 3) == "seq" then -- Operate on a Sequence
             op = "Sequence"
             destSeq = tonumber(arguments[2])
-        elseif string.lower(arguments[1]):sub(1, 3) == "pag" then   -- Operate on a Page
+        elseif string.lower(arguments[1]):sub(1, 3) == "pag" then -- Operate on a Page
             op = "Page"
             local x = Drt.split(arguments[2], ".")
             if #x == 2 then
@@ -148,7 +147,8 @@ local function Main (display_handle, argument)
         dimOnly = Drt.toboolean(arguments[5])
     else
         ErrPrintf("Incorrect number of arguments")
-        ErrPrintf("Plugin \"Fade Master\" \"<Page|Sequence>, <Page#.Executor# | Sequence#>, <Level>, <Seconds>, <DimOnly> \"")
+        ErrPrintf(
+            "Plugin \"Fade Master\" \"<Page|Sequence>, <Page#.Executor# | Sequence#>, <Level>, <Seconds>, <DimOnly> \"")
         return
     end
 
@@ -186,10 +186,10 @@ local function Main (display_handle, argument)
 
     -- setup exec and UserVars
     if op == "Sequence" then
-        gVarName = "FM".."S"..destSeq
+        gVarName = "FM" .. "S" .. destSeq
         execObject = DataPool().sequences:Children()[destSeq]
     elseif op == "Page" then
-        gVarName = "FM".. "P"..destPage.."."..destExec
+        gVarName = "FM" .. "P" .. destPage .. "." .. destExec
         local executors = DataPool().Pages:Children()[destPage]:Children()
         for key, value in pairs(executors) do
             if value.No == destExec then
@@ -224,13 +224,15 @@ local function Main (display_handle, argument)
         -- Start momement session
         SetVar(v, gVarName, true)
 
-        if faderTime > 0  and math.abs(distance) > 0 then
+        if faderTime > 0 and math.abs(distance) > 0 then
             if op == "Sequence" then
-                Printf("Running Fade Master on Sequence %d for %d Seconds. To abort - DeleteUserVariable \"%s\"", destSeq, faderTime, gVarName)
+                Printf("Running Fade Master on Sequence %d for %d Seconds. To abort - DeleteUserVariable \"%s\"", destSeq,
+                    faderTime, gVarName)
             elseif op == "Page" then
-                Printf("Running Fade Master on Page %d.%d for %d Seconds. To abort - DeleteUserVariable \"%s\"", destPage, destExec, faderTime, gVarName)
+                Printf("Running Fade Master on Page %d.%d for %d Seconds. To abort - DeleteUserVariable \"%s\"", destPage,
+                    destExec, faderTime, gVarName)
             end
-            local interval = (distance * tick)/faderTime
+            local interval = (distance * tick) / faderTime
 
 
             local dimUp = faderEnd > faderStart
@@ -238,14 +240,13 @@ local function Main (display_handle, argument)
             -- Printf("Dim Only: " .. tostring(dimOnly) .. ". Execute fade loop: " .. tostring(executeFadeLoop))  -- Debug output
 
             if executeFadeLoop then
-
                 repeat
                     local faderCurrent = execObject:GetFader(faderOptions)
                     faderOptions.value = faderCurrent - interval
                     execObject:SetFader(faderOptions)
                     coroutine.yield(tick)
                     if GetVar(v, gVarName) == nil then
-                        Printf("Exitting ".. gVarName .. " due to Variable Deletion")
+                        Printf("Exitting " .. gVarName .. " due to Variable Deletion")
                         return
                     end
                 until math.abs(faderOptions.value - faderEnd) <= math.abs(interval)
@@ -253,15 +254,13 @@ local function Main (display_handle, argument)
                 faderOptions.value = faderEnd
                 execObject:SetFader(faderOptions)
             end
-
-            else
-                Printf("Fade Master ".. gVarName .." lower than target")
-            end
+        else
+            Printf("Fade Master " .. gVarName .. " lower than target")
+        end
 
         -- End momement session
         DelVar(v, gVarName)
-
-        Printf("Fade Master ".. gVarName .." Done")
+        Printf("Fade Master " .. gVarName .. " Done")
     end
 end
 return Main
