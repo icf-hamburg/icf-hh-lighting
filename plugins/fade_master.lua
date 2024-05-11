@@ -220,9 +220,9 @@ local function Main (display_handle, argument)
 
         if faderTime > 0  and math.abs(distance) > 0 then
             if op == "Sequence" then
-                Printf("Running Fade Master on Sequence %d for %d Seconds. To abort - DelUserVar \"%s\"", destSeq, faderTime, gVarName)
+                Printf("Running Fade Master on Sequence %d for %d Seconds. To abort - DeleteUserVariable \"%s\"", destSeq, faderTime, gVarName)
             elseif op == "Page" then
-                Printf("Running Fade Master on Page %d.%d for %d Seconds. To abort - DelUserVar \"%s\"", destPage, destExec, faderTime, gVarName)
+                Printf("Running Fade Master on Page %d.%d for %d Seconds. To abort - DeleteUserVariable \"%s\"", destPage, destExec, faderTime, gVarName)
             end
             local interval = (distance * tick)/faderTime
             repeat
