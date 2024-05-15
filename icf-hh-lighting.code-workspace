@@ -117,7 +117,11 @@
 			"Timer",
 			"GetTokenNameByIndex",
 			"GetAttributeCount",
-			"CurrentExecPage"
+			"CurrentExecPage",
+			"FromAddr",
+			"gma3_helpers",
+			"CreateDirectoryRecursive",
+			"CmdIndirectWait"
 		]
 	}
 }
