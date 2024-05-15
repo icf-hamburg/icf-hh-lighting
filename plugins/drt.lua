@@ -346,3 +346,12 @@ function Drt.table2String(input)
         return tostring(input)
     end
 end
+
+
+function Drt.toboolean(input)
+    local bool = false
+    if input == "true" or input == "1" or input == 1 then
+        bool = true
+    end
+    return bool
+end
