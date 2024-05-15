@@ -92,6 +92,12 @@ local function user_input()
     end
 end
 
+local function remove_newline(remove_from_value)
+    remove_from_value = remove_from_value:gsub("[\n\r\u{2028}\u{2029}]+", "")
+    return remove_from_value
+end
+
+
 local function find_property_recursive(obj, what_to_search, is_strict, value_or_name)
     for i = 0, obj:PropertyCount() - 1 do
         local property_name = obj:PropertyName(i)
@@ -104,14 +110,18 @@ local function find_property_recursive(obj, what_to_search, is_strict, value_or_
             is_same = compare(what_to_search, tostring(property_name), is_strict)
         end
         if is_same then
+
+            local current_val = CY .. tostring(obj[obj:PropertyName(i)])
+            current_val = remove_newline(current_val)
+
             table.insert(properties,
                 obj:AddrNative(true, true) .. ',"' ..
                 obj:PropertyName(i) .. '","' .. tostring(obj[obj:PropertyName(i)]) .. '",')
             Echo('Address: ' ..
             MG ..
             obj:AddrNative(true, true) ..
-            YE .. ' Property: ' .. CY .. obj:PropertyName(i) .. YE .. ' Value: ' ..
-            CY .. tostring(obj[obj:PropertyName(i)]))
+            YE .. ' Property: ' .. CY .. obj:PropertyName(i) .. YE .. ' Value: ' .. current_val
+            )
         end
     end
     local child = obj:Children()
