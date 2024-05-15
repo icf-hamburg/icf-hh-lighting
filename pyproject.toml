@@ -1,0 +1,10 @@
+[tool.isort]
+line_length = 100
+profile = "black"
+multi_line_output = 3
+force_single_line = true
+add_imports = ["import typing as t"]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
