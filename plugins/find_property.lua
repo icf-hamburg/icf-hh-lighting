@@ -176,9 +176,13 @@ local function find_property(display)
                 Version() .. '_' .. filename_time ..
                 "(" .. what_to_search:gsub('[%.%*%%]', '') .. " - " .. value_or_name .. ").csv"
                 local file = io.open(path, "w")
-                file:write('Address,Property,Value,\n')
-                file:write(table.concat(properties, '\n'))
-                file:close()
+
+                if file ~= nil then
+                    file:write('Address,Property,Value,\n')
+                    file:write(table.concat(properties, '\n'))
+                    file:close()
+                end
+
                 Echo('Search results exported to: ' .. path)
                 Echo(gma3_helpers:headline('', headline_character, headline_width))
                 if console_stick_selected then
