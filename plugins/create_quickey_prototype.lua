@@ -1,8 +1,10 @@
+local QUICKEYS = Root().ShowData.DataPools.Default.Quickeys
+
 local function CreateQuickey(number, code)
-    local obj = Root().ShowData.DataPools.Default.Quickeys
-    obj:Create(number)
-    obj[number]:Set("Name", code)
-    obj[number]:Set("CODE", code)
+    QUICKEYS:Create(number)
+    QUICKEYS[number]:Set("NAME", code)
+    QUICKEYS[number]:Set("CODE", code)
+    QUICKEYS[number]:Set("LOCK", true)
 end
 
 
