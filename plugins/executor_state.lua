@@ -1,55 +1,23 @@
 -- Source: https://github.com/xxpasixx/pam-osc/blob/main/pam-OSC.lua
 
 
-
--- pam-OSC. It allows to controll GrandMA3 with Midi Devices over Open Stage Controll and allows for Feedback from MA.
--- Copyright (C) 2024  xxpasixx
--- This program is free software: you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation, either version 3 of the License, or
--- (at your option) any later version.
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
--- You should have received a copy of the GNU General Public License
--- along with this program.  If not, see <https://www.gnu.org/licenses/>. 
 local executorsToWatch = {}
 local oldValues = {}
 local oldButtonValues = {}
-local oldColorValues = {}
 local oldNameValues = {}
-local olsMasterEnabledValue = {
+local oldMasterEnabledValue = {
     highlight = false,
     lowlight = false,
     solo = false,
     blind = false
 }
 
-local oscEntry = 2
+local oscEntry = 6
+local oscPrefix = "gma3_tosc"
+local SendOSC = 'SendOSC ' .. oscEntry .. ' "/' .. oscPrefix
 
 -- Configure here, what executors you want to watch:
-for i = 101, 122 do
-    executorsToWatch[#executorsToWatch + 1] = i
-end
-
-for i = 201, 222 do
-    executorsToWatch[#executorsToWatch + 1] = i
-end
-
-for i = 301, 322 do
-    executorsToWatch[#executorsToWatch + 1] = i
-end
-
-for i = 401, 422 do
-    executorsToWatch[#executorsToWatch + 1] = i
-end
-
-for i = 191, 198 do
-    executorsToWatch[#executorsToWatch + 1] = i
-end
-
-for i = 291, 298 do
+for i = 201, 210 do
     executorsToWatch[#executorsToWatch + 1] = i
 end
 
@@ -57,7 +25,6 @@ end
 for _, number in ipairs(executorsToWatch) do
     oldValues[number] = "000"
     oldButtonValues[number] = false
-    oldColorValues[number] = "0,0,0,0"
     oldNameValues[number] = ";"
 end
 
@@ -65,14 +32,7 @@ end
 local tick = 1 / 10 -- 1/10
 local resendTick = 0
 
-local function getApereanceColor(sequence)
-    local apper = sequence["APPEARANCE"]
-    if apper ~= nil then
-        return apper['BACKR'] .. "," .. apper['BACKG'] .. "," .. apper['BACKB'] .. "," .. apper['BACKALPHA']
-    else
-        return "255,255,255,255"
-    end
-end
+
 
 local function getName(sequence)
     if sequence["CUENAME"] ~= nil then
@@ -92,9 +52,10 @@ end
 local function main()
     local automaticResendButtons = GetVar(GlobalVars(), "automaticResendButtons") or false
     local sendColors = GetVar(GlobalVars(), "sendColors") or false
-    local sendNames = GetVar(GlobalVars(), "sendNames") or false
+    local sendNames = 1
+    local firstIter = true
 
-    Printf("start pam OSC main()")
+    Printf("1")
     Printf("automaticResendButtons: " .. (automaticResendButtons and "true" or "false"))
     Printf("sendColors: " .. (sendColors and "true" or "false"))
     Printf("sendNames: " .. (sendNames and "true" or "false"))
@@ -127,13 +88,14 @@ local function main()
         end
 
         -- Check Master Enabled Values
-        for masterKey, masterValue in pairs(olsMasterEnabledValue) do
+        for masterKey, masterValue in pairs(oldMasterEnabledValue) do
             local currValue = getMasterEnabled(masterKey)
             if currValue ~= masterValue then
-                Cmd('SendOSC ' .. oscEntry .. ' "/masterEnabled/' .. masterKey .. ',i,' .. (currValue and 1 or 0))
-                olsMasterEnabledValue[masterKey] = currValue
+                Cmd(SendOSC .. '/masterEnabled/' .. masterKey .. ',i,' .. (currValue and 1 or 0))
+                oldMasterEnabledValue[masterKey] = currValue
             end
         end
+
 
         -- Check Page
         local myPage = CurrentExecPage()
@@ -146,7 +108,7 @@ local function main()
                 oldButtonValues[maKey] = false
             end
             forceReload = true
-            Cmd('SendOSC ' .. oscEntry .. ' "/updatePage/current,i,' .. destPage)
+            Cmd(SendOSC .. '/CurrentPageNo,s,' .. destPage)
         end
 
         -- Get all Executors
@@ -180,7 +142,6 @@ local function main()
                             nameValue = getName(myobject)
                         end
                     end
-
                 end
             end
 
@@ -188,30 +149,20 @@ local function main()
             if (oldValues[listKey] ~= faderValue and not (isFlash and buttonValue and faderValue == 100)) or forceReload then
                 hasFaderUpdated = true
                 oldValues[listKey] = faderValue
-                Cmd('SendOSC ' .. oscEntry .. '  "/Page' .. destPage .. '/Fader' .. listValue .. ',i,' ..
-                        (faderValue * 1.27) .. '"')
+                Cmd(SendOSC .. '/Fader' .. listValue .. ',f,' .. faderValue .. '"')
             end
 
             -- Send Button Value
             if oldButtonValues[listKey] ~= buttonValue or forceReload or forceReloadButtons then
                 oldButtonValues[listKey] = buttonValue
-                Cmd('SendOSC ' .. oscEntry .. '  "/Page' .. destPage .. '/Button' .. listValue .. ',s,' ..
-                        (buttonValue and "On" or "Off") .. '"')
-            end
-
-            -- Send Color Value
-            if sendColors and (oldColorValues[listKey] ~= colorValue or forceReload) then
-                oldColorValues[listKey] = colorValue
-                local newValue = string.gsub(colorValue, ",", ";")
-                Cmd('SendOSC ' .. oscEntry .. '  "/Page' .. destPage .. '/Color' .. listValue .. ',s,' .. newValue ..
-                        '"')
+                Cmd(SendOSC .. '/Button' .. listValue .. ',s,' ..
+                    (buttonValue and "On" or "Off") .. '"')
             end
 
             -- Send Name Value
             if sendNames and (oldNameValues[listKey] ~= nameValue or forceReload) then
                 oldNameValues[listKey] = nameValue
-                Cmd('SendOSC ' .. oscEntry .. '  "/Page' .. destPage .. '/Name' .. listValue .. ',s,' .. nameValue ..
-                        '"')
+                Cmd(SendOSC .. '/Name' .. listValue .. ',s,' .. nameValue .. '"')
             end
         end
         forceReload = false
@@ -220,7 +171,6 @@ local function main()
         -- delay
         coroutine.yield(tick)
     end
-
 end
 
 return main
