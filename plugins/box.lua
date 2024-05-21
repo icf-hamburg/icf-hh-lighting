@@ -2,24 +2,16 @@
 
 local function Main()
     local messageBoxOptions = {
-        title = "Hello World!",
-        message = "",
-        commands = {
-            { value = false, name = "Cancel" },
-            { value = true, name = "OK" }
-        },
-        inputs = {
-            { name = "Hello", vkPlugin = "TextInput" },
-            { name = "World", vkPlugin = "TextInput" },
-        }
+        title = "Hazer Erinnerung",
+        message = "Bitte den Hazer nicht vergessen!",
+
+        -- colors: https://help.malighting.com/grandMA3/2.0/HTML/ws_colors_color_theme.html
+        -- Settings > Desk Light & Color Theme > Edit > *Use name and not GlobalDefRef*
+        titleTextColor = "Global.Text",
+        messageTextColor = "Global.Text",
+        backColor = "Global.AlertText",
     }
-    local result = MessageBox(messageBoxOptions)
-    Drt.table2String(result)
-    Printf("------------------------------")
-    Drt.table2String(result.inputs)
-    Printf("------------------------------")
-    Printf(result.inputs["Hello"])
-    -- Printf(result.inputs[1])  -- does not work
+    MessageBox(messageBoxOptions)
 end
 
 return Main
