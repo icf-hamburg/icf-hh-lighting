@@ -165,18 +165,18 @@ local function main()
                 Cmd(SendOSC .. '/Fader' .. listValue .. ',f,' .. faderValue .. '"')
             end
 
-            -- Send Button Value
-            if oldButtonValues[listKey] ~= buttonValue or forceReload or forceReloadButtons then
-                oldButtonValues[listKey] = buttonValue
-                Cmd(SendOSC .. '/Button' .. listValue .. ',s,' ..
-                    (buttonValue and "On" or "Off") .. '"')
-            end
+            -- -- Send Button Value
+            -- if oldButtonValues[listKey] ~= buttonValue or forceReload or forceReloadButtons then
+            --     oldButtonValues[listKey] = buttonValue
+            --     Cmd(SendOSC .. '/Button' .. listValue .. ',s,' ..
+            --         (buttonValue and "On" or "Off") .. '"')
+            -- end
 
-            -- Send Name Value
-            if sendNames and (oldNameValues[listKey] ~= nameValue or forceReload) then
-                oldNameValues[listKey] = nameValue
-                Cmd(SendOSC .. '/Name' .. listValue .. ',s,' .. nameValue .. '"')
-            end
+            -- -- Send Name Value
+            -- if sendNames and (oldNameValues[listKey] ~= nameValue or forceReload) then
+            --     oldNameValues[listKey] = nameValue
+            --     Cmd(SendOSC .. '/Name' .. listValue .. ',s,' .. nameValue .. '"')
+            -- end
         end
         forceReload = false
         forceReloadButtons = false
