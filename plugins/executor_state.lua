@@ -12,7 +12,7 @@ local oldMasterEnabledValue = {
     blind = false
 }
 
-local oscEntry = 6
+local oscEntry = 5
 local oscPrefix = "gma3_tosc"
 local SendOSC = 'SendOSC ' .. oscEntry .. ' "/' .. oscPrefix
 
@@ -20,6 +20,19 @@ local SendOSC = 'SendOSC ' .. oscEntry .. ' "/' .. oscPrefix
 for i = 201, 210 do
     executorsToWatch[#executorsToWatch + 1] = i
 end
+
+for i = 291, 298 do
+    executorsToWatch[#executorsToWatch + 1] = i
+end
+
+for i = 301, 310 do
+    executorsToWatch[#executorsToWatch + 1] = i
+end
+
+for i = 401, 410 do
+    executorsToWatch[#executorsToWatch + 1] = i
+end
+
 
 -- set the default Values
 for _, number in ipairs(executorsToWatch) do
