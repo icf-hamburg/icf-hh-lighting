@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<GMA3 DataVersion="2.0.2.0">
+    <UserPlugin Name="Resolume" Guid="BA AD F0 0D 8D 69 31 10 8A 6F FC E9 F7 8B D0 A9" Author="Cédric Uden" Version="1.0.0.0">
+        <ComponentLua Name="Clips" Guid="BA AD F0 0D 96 86 FA 71 F4 7C CD F3 1B E0 E9 A9" FileName="clips.lua" FilePath="resolume" />
+    </UserPlugin>
+</GMA3>
