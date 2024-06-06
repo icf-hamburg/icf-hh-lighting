@@ -121,7 +121,8 @@
 			"FromAddr",
 			"gma3_helpers",
 			"CreateDirectoryRecursive",
-			"CmdIndirectWait"
+			"CmdIndirectWait",
+			"GetPresetData",
 		]
 	}
 }
