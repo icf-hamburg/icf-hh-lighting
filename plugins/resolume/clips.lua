@@ -31,7 +31,7 @@ end
 local function Main(display_handle, argument)
     -- Example Path:
     -- "/composition/layers/2/clips/2/connect"
-    local oscPatch = "2"
+    local oscPatch = "3"
     local layer = 1
     local clip = 1 -- placeholder
 

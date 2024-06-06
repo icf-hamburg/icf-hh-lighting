@@ -37,6 +37,7 @@ local function singlePatchCedric()
         patchDict("TouchOSC Einleuchten", PRIMARY_IF, "7011", true),
         patchDict("TouchOSC Einleuchten", PRIMARY_IF, "7012", false),
         patchDict("Resolume", LOCALHOST, "7021", true),
+        patchDict("Companion", LOCALHOST, "7031", true),
         patchDict("Companion", LOCALHOST, "7032", false),
     }
 end
