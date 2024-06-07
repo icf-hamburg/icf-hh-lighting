@@ -8,13 +8,9 @@ ids := WinGetList("Resolume Arena")
 
 if (ids.Length == 0) {
     Result := MsgBox("Resolume ist nicht offen. Jetzt starten?",,4)
-    
     if (Result = "Yes")	{
     	Run(PATH)
     }
-	
-} else if (ids.Length == 1) {
-	WinActivate(ids[1])
 } else {
-	MsgBox("Zu viele Resolume Fenster offen. Ich weiß nicht, was ich tuen soll.")
+    WinActivate(ids[1])
 }
