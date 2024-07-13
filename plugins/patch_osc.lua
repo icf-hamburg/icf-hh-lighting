@@ -30,27 +30,14 @@ local function patchOscObject(handle, dict)
 end
 
 
-local function singlePatchCedric()
-    local PRIMARY_IF = "192.168.178.10"
-
+local function createPatch(TOSC, RESOLUME, COMPANION, MULTI)
     return {
-        patchDict("TouchOSC Einleuchten", PRIMARY_IF, "7011", true),
-        patchDict("TouchOSC Einleuchten", PRIMARY_IF, "7012", false),
-        patchDict("Resolume", LOCALHOST, "7021", true),
-        patchDict("Companion", LOCALHOST, "7031", true),
-        patchDict("Companion", LOCALHOST, "7032", false),
-    }
-end
-
-
-local function singlePatchEmporio()
-    local PRIMARY_IF = "192.168.1.10"
-
-    return {
-        patchDict("TouchOSC Einleuchten", PRIMARY_IF, "7011", true),
-        patchDict("TouchOSC Einleuchten", PRIMARY_IF, "7012", false),
-        patchDict("Resolume", LOCALHOST, "7021", true),
-        patchDict("Companion", LOCALHOST, "7031", true),
+        patchDict("TouchOSC Einleuchten", TOSC, "7011", true),
+        patchDict("TouchOSC Einleuchten", TOSC, "7012", false),
+        patchDict("Resolume", RESOLUME, "7021", true),
+        patchDict("Companion", COMPANION, "7031", true),
+        patchDict("Companion", COMPANION, "7032", false),
+        patchDict("Multi Timecode Expert", MULTI, "7041", true),
     }
 end
 
@@ -74,10 +61,21 @@ return function()
     local prompt = displayPrompt()
     local patchPlan = nil
 
-    if prompt == 1 then
-        patchPlan = singlePatchEmporio()
-    elseif prompt == 2 then
-        patchPlan = singlePatchCedric()
+
+    TOSC = LOCALHOST
+    RESOLUME = LOCALHOST
+    COMPANION = LOCALHOST
+    MULTI = LOCALHOST
+
+    if prompt == 1 then  -- Emporio
+        MAIN_IF = "10.10.1.10"
+        TOSC = "10.10.1.11"
+        RESOLUME = LOCALHOST
+        COMPANION = LOCALHOST
+        MULTI = "10.10.1.12"
+        patchPlan = createPatch(TOSC, RESOLUME, COMPANION, MULTI)
+    elseif prompt == 2 then  -- At Home
+        patchPlan = createPatch(TOSC, RESOLUME, COMPANION, MULTI)
     end
 
 
