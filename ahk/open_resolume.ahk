@@ -14,36 +14,35 @@ GetActiveWindow() {
     return WinGetTitle("A")
 }
 
-resolume_id_string := "Resolume Arena"
-ma3_id_string := "Display"
 
 IsResolumeActive() {
-    return InStr(GetActiveWindow(), resolume_id_string) 
+    return InStr(GetActiveWindow(), "Resolume Arena") 
 }
 IsMa3Active() {
-    return InStr(GetActiveWindow(), ma3_id_string)
+    return RegExMatch(GetActiveWindow(), "Display \d onPC")
 }
 
 GetOpenResolumeWindows() {
-    return WinGetList(resolume_id_string)
+    return WinGetList("ahk_exe Arena.exe")
 }
 
 GetOpenMa3Windows() {
-    return WinGetList(ma3_id_string)
+    return WinGetList("ahk_exe app_gma3.exe")
 }
 
 
 FocusTargetWindow() {
     if IsMa3Active() {
-        return GetOpenResolumeWindows()[1]
+        return GetOpenResolumeWindows()
     }
     else {
-        return GetOpenMa3Windows()[1]
+        return GetOpenMa3Windows()
     }
 }
 
 if (GetOpenResolumeWindows().Length == 0) {
     PromptAndOpenResolume()
 } else {
-    WinActivate(FocusTargetWindow())
+    for window in FocusTargetWindow()
+        WinActivate(window)
 }
