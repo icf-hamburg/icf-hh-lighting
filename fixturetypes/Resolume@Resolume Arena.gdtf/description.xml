@@ -142,7 +142,7 @@
                     </DMXChannel>
                     <DMXChannel DMXBreak="1" Offset="2,3" Highlight="None" Geometry="Default Geometry" InitialFunction="Default Geometry_VideoBrightness.VideoBrightness.VideoBrightness 1">
                         <LogicalChannel Attribute="VideoBrightness" Snap="No" Master="None" MibFade="0.000000" DMXChangeTimeLimit="0.000000">
-                            <ChannelFunction Name="VideoBrightness 1" Default="32896/2" DMXFrom="0/2" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealFade="0.000000" RealAcceleration="0.000000" Min="0.000000" Max="0.000000" CustomName="" OriginalAttribute="" Attribute="VideoBrightness"/>
+                            <ChannelFunction Name="VideoBrightness 1" Default="32768/2" DMXFrom="0/2" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealFade="0.000000" RealAcceleration="0.000000" Min="0.000000" Max="0.000000" CustomName="" OriginalAttribute="" Attribute="VideoBrightness"/>
                         </LogicalChannel>
                     </DMXChannel>
                     <DMXChannel DMXBreak="1" Offset="4" Highlight="None" Geometry="Default Geometry" InitialFunction="Default Geometry_VideoContrast.VideoContrast.VideoContrast 1">
