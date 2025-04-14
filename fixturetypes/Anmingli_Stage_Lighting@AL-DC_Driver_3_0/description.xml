@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<GDTF DataVersion="1.2">
+
+  <FixtureType CanHaveChildren="No" Description="" FixtureTypeID="3D775408-3BEB-458B-88E1-5B673EF81B12" LongName="" Manufacturer="Anmingli Stage Lighting" Name="AL-DC Driver 3_0" RefFT="" ShortName="" Thumbnail="thumbnail" ThumbnailOffsetX="125" ThumbnailOffsetY="119">
+    <AttributeDefinitions>
+      <ActivationGroups>
+        <ActivationGroup Name="ColorRGB"/>
+      </ActivationGroups>
+      <FeatureGroups>
+        <FeatureGroup Name="Dimmer" Pretty="Dimmer">
+          <Feature Name="Dimmer"/>
+        </FeatureGroup>
+        <FeatureGroup Name="Color" Pretty="Color">
+          <Feature Name="RGB"/>
+        </FeatureGroup>
+      </FeatureGroups>
+      <Attributes>
+        <Attribute Feature="Dimmer.Dimmer" Name="Dimmer" PhysicalUnit="None" Pretty="Dim"/>
+        <Attribute ActivationGroup="ColorRGB" Feature="Color.RGB" Name="ColorAdd_R" PhysicalUnit="ColorComponent" Pretty="R"/>
+        <Attribute ActivationGroup="ColorRGB" Feature="Color.RGB" Name="ColorAdd_G" PhysicalUnit="ColorComponent" Pretty="G"/>
+        <Attribute ActivationGroup="ColorRGB" Feature="Color.RGB" Name="ColorAdd_B" PhysicalUnit="ColorComponent" Pretty="B"/>
+      </Attributes>
+    </AttributeDefinitions>
+    <Wheels/>
+    <PhysicalDescriptions>
+      <ColorSpace Mode="sRGB" Name=""/>
+      <AdditionalColorSpaces/>
+      <Gamuts/>
+      <Filters/>
+      <Emitters>
+        <Emitter Color="0.702028,0.297316,19.150713" DiodePart="" DominantWaveLength="626.419983" Name="Red">
+          <Measurement InterpolationTo="Linear" LuminousIntensity="1.000000" Physical="100.000000"/>
+        </Emitter>
+        <Emitter Color="0.173442,0.710537,38.176816" DiodePart="" DominantWaveLength="526.530029" Name="Green">
+          <Measurement InterpolationTo="Linear" LuminousIntensity="1.000000" Physical="100.000000"/>
+        </Emitter>
+        <Emitter Color="0.151900,0.071900,11.000000" DiodePart="" DominantWaveLength="452.000000" Name="Blue">
+          <Measurement InterpolationTo="Linear" LuminousIntensity="1.000000" Physical="100.000000"/>
+        </Emitter>
+      </Emitters>
+      <DMXProfiles/>
+      <CRIs/>
+      <Connectors/>
+      <Properties>
+        <OperatingTemperature High="40.000000" Low="0.000000"/>
+        <Weight Value="0.000000"/>
+        <LegHeight Value="0.000000"/>
+      </Properties>
+    </PhysicalDescriptions>
+    <Models>
+      <Model File="" Height="0.020000" Length="1.000000" Name="Base" PrimitiveType="Base1_1" SVGFrontOffsetX="0.000000" SVGFrontOffsetY="0.000000" SVGOffsetX="0.000000" SVGOffsetY="0.000000" SVGSideOffsetX="0.000000" SVGSideOffsetY="0.000000" Width="0.020000"/>
+      <Model File="" Height="0.020000" Length="0.250000" Name="Sub" PrimitiveType="Cube" SVGFrontOffsetX="0.000000" SVGFrontOffsetY="0.000000" SVGOffsetX="0.000000" SVGOffsetY="0.000000" SVGSideOffsetX="0.000000" SVGSideOffsetY="0.000000" Width="0.020000"/>
+      <Model File="" Height="0.020000" Length="0.060000" Name="Beam" PrimitiveType="Cube" SVGFrontOffsetX="0.000000" SVGFrontOffsetY="0.000000" SVGOffsetX="0.000000" SVGOffsetY="0.000000" SVGSideOffsetX="0.000000" SVGSideOffsetY="0.000000" Width="0.020000"/>
+    </Models>
+    <Geometries>
+      <Geometry Name="Base" Position="{1.000000,0.000000,0.000000,0.000000}{0.000000,1.000000,0.000000,0.000000}{0.000000,0.000000,1.000000,0.000000}{0,0,0,1}">
+        <Geometry Model="Sub" Name="Universe 1" Position="{1.000000,0.000000,0.000000,-0.375000}{0.000000,1.000000,0.000000,0.000000}{0.000000,0.000000,1.000000,0.020000}{0,0,0,1}">
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 1" Position="{1.000000,0.000000,0.000000,-0.094000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 2" Position="{1.000000,0.000000,0.000000,-0.032000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 3" Position="{1.000000,0.000000,0.000000,0.032000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 4" Position="{1.000000,0.000000,0.000000,0.094000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+        </Geometry>
+        <Geometry Model="Sub" Name="Universe 2" Position="{1.000000,0.000000,0.000000,-0.125000}{0.000000,1.000000,0.000000,0.000000}{0.000000,0.000000,1.000000,0.020000}{0,0,0,1}">
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 5" Position="{1.000000,0.000000,0.000000,-0.094000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 6" Position="{1.000000,0.000000,0.000000,-0.032000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 7" Position="{1.000000,0.000000,0.000000,0.032000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 8" Position="{1.000000,0.000000,0.000000,0.094000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+        </Geometry>
+        <Geometry Model="Sub" Name="Universe 3" Position="{1.000000,0.000000,0.000000,0.125000}{0.000000,1.000000,0.000000,0.000000}{0.000000,0.000000,1.000000,0.020000}{0,0,0,1}">
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 9" Position="{1.000000,0.000000,0.000000,-0.094000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 10" Position="{1.000000,0.000000,0.000000,-0.032000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 11" Position="{1.000000,0.000000,0.000000,0.032000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 12" Position="{1.000000,0.000000,0.000000,0.094000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+        </Geometry>
+        <Geometry Model="Sub" Name="Universe 4" Position="{1.000000,0.000000,0.000000,0.375000}{0.000000,1.000000,0.000000,0.000000}{0.000000,0.000000,1.000000,0.020000}{0,0,0,1}">
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 13" Position="{1.000000,0.000000,0.000000,-0.094000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 14" Position="{1.000000,0.000000,0.000000,-0.032000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 15" Position="{1.000000,0.000000,0.000000,0.032000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+          <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="Beam" Name="Beam 16" Position="{1.000000,0.000000,0.000000,0.094000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.020000}{0,0,0,1}" PowerConsumption="24.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+        </Geometry>
+      </Geometry>
+    </Geometries>
+    <DMXModes>
+      <DMXMode Description="" Geometry="Base" Name="Standard mode">
+        <DMXChannels>
+          <DMXChannel DMXBreak="1" Geometry="Universe 1" Highlight="None" InitialFunction="Universe 1_Dimmer.Dimmer.Dimmer 1" Offset="1">
+            <LogicalChannel Attribute="Dimmer" DMXChangeTimeLimit="0.000000" Master="Grand" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="Dimmer" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="Dimmer 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 1" Highlight="None" InitialFunction="Beam 1_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Offset="8">
+            <LogicalChannel Attribute="ColorAdd_R" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_R" CustomName="" DMXFrom="0/1" Default="0/1" Max="1.000000" Min="0.000000" Name="ColorAdd_R 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 1" Highlight="None" InitialFunction="Beam 1_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Offset="9">
+            <LogicalChannel Attribute="ColorAdd_G" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_G" CustomName="" DMXFrom="0/1" Default="0/1" Max="1.000000" Min="0.000000" Name="ColorAdd_G 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 1" Highlight="None" InitialFunction="Beam 1_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Offset="10">
+            <LogicalChannel Attribute="ColorAdd_B" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_B" CustomName="" DMXFrom="0/1" Default="0/1" Max="1.000000" Min="0.000000" Name="ColorAdd_B 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 2" Highlight="None" InitialFunction="Beam 2_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Offset="11">
+            <LogicalChannel Attribute="ColorAdd_R" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_R" CustomName="" DMXFrom="0/1" Default="0/1" Max="1.000000" Min="0.000000" Name="ColorAdd_R 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 2" Highlight="None" InitialFunction="Beam 2_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Offset="12">
+            <LogicalChannel Attribute="ColorAdd_G" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_G" CustomName="" DMXFrom="0/1" Default="0/1" Max="1.000000" Min="0.000000" Name="ColorAdd_G 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 2" Highlight="None" InitialFunction="Beam 2_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Offset="13">
+            <LogicalChannel Attribute="ColorAdd_B" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_B" CustomName="" DMXFrom="0/1" Default="0/1" Max="1.000000" Min="0.000000" Name="ColorAdd_B 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+        </DMXChannels>
+        <Relations/>
+        <FTMacros/>
+      </DMXMode>
+    </DMXModes>
+    <Revisions>
+      <Revision Date="2023-06-22T10:14:34" ModifiedBy="" Text="" UserID="0"/>
+      <Revision Date="2025-04-14T18:39:30" ModifiedBy="GDTF Builder V1.9.4" Text="wip-v1" UserID="33797"/>
+    </Revisions>
+    <FTPresets/>
+    <Protocols/>
+  </FixtureType>
+
+</GDTF>
