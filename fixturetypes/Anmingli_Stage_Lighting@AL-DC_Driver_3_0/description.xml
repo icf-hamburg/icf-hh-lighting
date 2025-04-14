@@ -90,7 +90,7 @@
           </DMXChannel>
           <DMXChannel DMXBreak="1" Geometry="Universe 1" Highlight="None" InitialFunction="Universe 1_Dimmer.Dimmer.Dimmer 1" Offset="">
             <LogicalChannel Attribute="Dimmer" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
-              <ChannelFunction Attribute="Dimmer" CustomName="" DMXFrom="0/4" Default="0/4" Max="1.000000" Min="0.000000" Name="Dimmer 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+              <ChannelFunction Attribute="Dimmer" CustomName="" DMXFrom="0/4" Default="4294967295/4" Max="1.000000" Min="0.000000" Name="Dimmer 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
             </LogicalChannel>
           </DMXChannel>
           <DMXChannel DMXBreak="1" Geometry="Beam 1" Highlight="4294967295/4" InitialFunction="Beam 1_Dimmer.Dimmer.Dimmer 1" Offset="">
