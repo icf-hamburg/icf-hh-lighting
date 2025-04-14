@@ -189,6 +189,107 @@
               <ChannelFunction Attribute="ColorAdd_B" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_B 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
             </LogicalChannel>
           </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Universe 2" Highlight="None" InitialFunction="Universe 2_Dimmer.Dimmer.Dimmer 1" Offset="">
+            <LogicalChannel Attribute="Dimmer" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="Dimmer" CustomName="" DMXFrom="0/4" Default="4294967295/4" Max="1.000000" Min="0.000000" Name="Dimmer 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 5" Highlight="4294967295/4" InitialFunction="Beam 5_Dimmer.Dimmer.Dimmer 1" Offset="">
+            <LogicalChannel Attribute="Dimmer" DMXChangeTimeLimit="0.000000" Master="Grand" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="Dimmer" CustomName="" DMXFrom="0/4" Default="0/4" Max="1.000000" Min="0.000000" Name="Dimmer 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000">
+                <ChannelSet DMXFrom="0/4" Name="Min" WheelSlotIndex="0"/>
+                <ChannelSet DMXFrom="1/4" Name="" WheelSlotIndex="0"/>
+                <ChannelSet DMXFrom="4294967295/4" Name="Max" WheelSlotIndex="0"/>
+              </ChannelFunction>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 5" Highlight="None" InitialFunction="Beam 5_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Offset="20">
+            <LogicalChannel Attribute="ColorAdd_R" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_R" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_R 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 5" Highlight="None" InitialFunction="Beam 5_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Offset="21">
+            <LogicalChannel Attribute="ColorAdd_G" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_G" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_G 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 5" Highlight="None" InitialFunction="Beam 5_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Offset="22">
+            <LogicalChannel Attribute="ColorAdd_B" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_B" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_B 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 6" Highlight="4294967295/4" InitialFunction="Beam 6_Dimmer.Dimmer.Dimmer 1" Offset="">
+            <LogicalChannel Attribute="Dimmer" DMXChangeTimeLimit="0.000000" Master="Grand" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="Dimmer" CustomName="" DMXFrom="0/4" Default="0/4" Max="1.000000" Min="0.000000" Name="Dimmer 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000">
+                <ChannelSet DMXFrom="0/4" Name="Min" WheelSlotIndex="0"/>
+                <ChannelSet DMXFrom="1/4" Name="" WheelSlotIndex="0"/>
+                <ChannelSet DMXFrom="4294967295/4" Name="Max" WheelSlotIndex="0"/>
+              </ChannelFunction>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 6" Highlight="None" InitialFunction="Beam 6_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Offset="23">
+            <LogicalChannel Attribute="ColorAdd_R" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_R" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_R 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 6" Highlight="None" InitialFunction="Beam 6_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Offset="24">
+            <LogicalChannel Attribute="ColorAdd_G" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_G" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_G 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 6" Highlight="None" InitialFunction="Beam 6_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Offset="25">
+            <LogicalChannel Attribute="ColorAdd_B" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_B" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_B 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 7" Highlight="4294967295/4" InitialFunction="Beam 7_Dimmer.Dimmer.Dimmer 1" Offset="">
+            <LogicalChannel Attribute="Dimmer" DMXChangeTimeLimit="0.000000" Master="Grand" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="Dimmer" CustomName="" DMXFrom="0/4" Default="0/4" Max="1.000000" Min="0.000000" Name="Dimmer 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000">
+                <ChannelSet DMXFrom="0/4" Name="Min" WheelSlotIndex="0"/>
+                <ChannelSet DMXFrom="1/4" Name="" WheelSlotIndex="0"/>
+                <ChannelSet DMXFrom="4294967295/4" Name="Max" WheelSlotIndex="0"/>
+              </ChannelFunction>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 7" Highlight="None" InitialFunction="Beam 7_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Offset="26">
+            <LogicalChannel Attribute="ColorAdd_R" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_R" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_R 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 7" Highlight="None" InitialFunction="Beam 7_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Offset="27">
+            <LogicalChannel Attribute="ColorAdd_G" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_G" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_G 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 7" Highlight="None" InitialFunction="Beam 7_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Offset="28">
+            <LogicalChannel Attribute="ColorAdd_B" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_B" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_B 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 8" Highlight="4294967295/4" InitialFunction="Beam 8_Dimmer.Dimmer.Dimmer 1" Offset="">
+            <LogicalChannel Attribute="Dimmer" DMXChangeTimeLimit="0.000000" Master="Grand" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="Dimmer" CustomName="" DMXFrom="0/4" Default="0/4" Max="1.000000" Min="0.000000" Name="Dimmer 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000">
+                <ChannelSet DMXFrom="0/4" Name="Min" WheelSlotIndex="0"/>
+                <ChannelSet DMXFrom="1/4" Name="" WheelSlotIndex="0"/>
+                <ChannelSet DMXFrom="4294967295/4" Name="Max" WheelSlotIndex="0"/>
+              </ChannelFunction>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 8" Highlight="None" InitialFunction="Beam 8_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Offset="29">
+            <LogicalChannel Attribute="ColorAdd_R" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_R" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_R 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 8" Highlight="None" InitialFunction="Beam 8_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Offset="30">
+            <LogicalChannel Attribute="ColorAdd_G" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_G" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_G 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
+          <DMXChannel DMXBreak="1" Geometry="Beam 8" Highlight="None" InitialFunction="Beam 8_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Offset="31">
+            <LogicalChannel Attribute="ColorAdd_B" DMXChangeTimeLimit="0.000000" Master="None" MibFade="0.000000" Snap="No">
+              <ChannelFunction Attribute="ColorAdd_B" CustomName="" DMXFrom="0/1" Default="255/1" Max="1.000000" Min="0.000000" Name="ColorAdd_B 1" OriginalAttribute="" PhysicalFrom="0.000000" PhysicalTo="1.000000" RealAcceleration="0.000000" RealFade="0.000000"/>
+            </LogicalChannel>
+          </DMXChannel>
         </DMXChannels>
         <Relations>
           <Relation Follower="Beam 1_Dimmer.Dimmer.Dimmer 1" Master="Universe 1_Dimmer" Name="Universe 1_Dimmer over Dimmer 1" Type="Multiply"/>
@@ -207,6 +308,22 @@
           <Relation Follower="Beam 4_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Master="Beam 4_Dimmer" Name="Beam 4_Dimmer over ColorAdd_R 1" Type="Multiply"/>
           <Relation Follower="Beam 4_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Master="Beam 4_Dimmer" Name="Beam 4_Dimmer over ColorAdd_G 1" Type="Multiply"/>
           <Relation Follower="Beam 4_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Master="Beam 4_Dimmer" Name="Beam 4_Dimmer over ColorAdd_B 1" Type="Multiply"/>
+          <Relation Follower="Beam 5_Dimmer.Dimmer.Dimmer 1" Master="Universe 2_Dimmer" Name="Universe 2_Dimmer over Dimmer 1" Type="Multiply"/>
+          <Relation Follower="Beam 6_Dimmer.Dimmer.Dimmer 1" Master="Universe 2_Dimmer" Name="Universe 2_Dimmer over Dimmer 2" Type="Multiply"/>
+          <Relation Follower="Beam 7_Dimmer.Dimmer.Dimmer 1" Master="Universe 2_Dimmer" Name="Universe 2_Dimmer over Dimmer 3" Type="Multiply"/>
+          <Relation Follower="Beam 8_Dimmer.Dimmer.Dimmer 1" Master="Universe 2_Dimmer" Name="Universe 2_Dimmer over Dimmer 4" Type="Multiply"/>
+          <Relation Follower="Beam 5_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Master="Beam 5_Dimmer" Name="Beam 5_Dimmer over ColorAdd_R 1" Type="Multiply"/>
+          <Relation Follower="Beam 5_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Master="Beam 5_Dimmer" Name="Beam 5_Dimmer over ColorAdd_G 1" Type="Multiply"/>
+          <Relation Follower="Beam 5_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Master="Beam 5_Dimmer" Name="Beam 5_Dimmer over ColorAdd_B 1" Type="Multiply"/>
+          <Relation Follower="Beam 6_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Master="Beam 6_Dimmer" Name="Beam 6_Dimmer over ColorAdd_R 1" Type="Multiply"/>
+          <Relation Follower="Beam 6_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Master="Beam 6_Dimmer" Name="Beam 6_Dimmer over ColorAdd_G 1" Type="Multiply"/>
+          <Relation Follower="Beam 6_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Master="Beam 6_Dimmer" Name="Beam 6_Dimmer over ColorAdd_B 1" Type="Multiply"/>
+          <Relation Follower="Beam 7_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Master="Beam 7_Dimmer" Name="Beam 7_Dimmer over ColorAdd_R 1" Type="Multiply"/>
+          <Relation Follower="Beam 7_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Master="Beam 7_Dimmer" Name="Beam 7_Dimmer over ColorAdd_G 1" Type="Multiply"/>
+          <Relation Follower="Beam 7_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Master="Beam 7_Dimmer" Name="Beam 7_Dimmer over ColorAdd_B 1" Type="Multiply"/>
+          <Relation Follower="Beam 8_ColorAdd_R.ColorAdd_R.ColorAdd_R 1" Master="Beam 8_Dimmer" Name="Beam 8_Dimmer over ColorAdd_R 1" Type="Multiply"/>
+          <Relation Follower="Beam 8_ColorAdd_G.ColorAdd_G.ColorAdd_G 1" Master="Beam 8_Dimmer" Name="Beam 8_Dimmer over ColorAdd_G 1" Type="Multiply"/>
+          <Relation Follower="Beam 8_ColorAdd_B.ColorAdd_B.ColorAdd_B 1" Master="Beam 8_Dimmer" Name="Beam 8_Dimmer over ColorAdd_B 1" Type="Multiply"/>
         </Relations>
         <FTMacros/>
       </DMXMode>
