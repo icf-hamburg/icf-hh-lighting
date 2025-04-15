@@ -70,6 +70,11 @@
     <Geometries>
       <Geometry Model="Base" Name="Base" Position="{1.000000,0.000000,0.000000,0.000000}{0.000000,1.000000,0.000000,0.000000}{0.000000,0.000000,1.000000,0.000000}{0,0,0,1}">
         <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="LED" Name="LED1" Position="{1.000000,0.000000,0.000000,-0.188000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.080000}{0,0,0,1}" PowerConsumption="15.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+        <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="LED" Name="LED2" Position="{1.000000,0.000000,0.000000,-0.113000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.080000}{0,0,0,1}" PowerConsumption="15.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+        <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="LED" Name="LED3" Position="{1.000000,0.000000,0.000000,-0.038000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.080000}{0,0,0,1}" PowerConsumption="15.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+        <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="LED" Name="LED4" Position="{1.000000,0.000000,0.000000,0.037000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.080000}{0,0,0,1}" PowerConsumption="15.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+        <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="LED" Name="LED5" Position="{1.000000,0.000000,0.000000,0.112000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.080000}{0,0,0,1}" PowerConsumption="15.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
+        <Beam BeamAngle="25.000000" BeamRadius="0.050000" BeamType="Wash" ColorRenderingIndex="100" ColorTemperature="6000.000000" FieldAngle="25.000000" LampType="LED" LuminousFlux="10000.000000" Model="LED" Name="LED6" Position="{1.000000,0.000000,0.000000,0.187000}{0.000000,-1.000000,0.000000,0.000000}{0.000000,-0.000000,-1.000000,0.080000}{0,0,0,1}" PowerConsumption="15.000000" RectangleRatio="1.777700" ThrowRatio="1.000000"/>
       </Geometry>
     </Geometries>
     <DMXModes>
@@ -134,7 +139,8 @@
     </DMXModes>
     <Revisions>
       <Revision Date="2021-07-05T07:56:52" ModifiedBy="" Text="" UserID="0"/>
-      <Revision Date="2025-04-15T09:59:29" ModifiedBy="GDTF Builder V1.9.4" Text="wip-v1" UserID="33797"/>
+      <Revision Date="2025-04-15T09:59:32" ModifiedBy="" Text="wip-v1" UserID="0"/>
+      <Revision Date="2025-04-15T10:01:16" ModifiedBy="GDTF Builder V1.9.4" Text="wip-v2" UserID="33797"/>
     </Revisions>
     <FTPresets/>
     <Protocols/>
