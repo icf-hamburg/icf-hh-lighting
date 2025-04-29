@@ -22,8 +22,8 @@ local function Main(display_handle, argument)
         return
     end
 
-    local speedmaster = "3.2";
-    local reset_speedscale = "Set Master " .. speedmaster .. " \"SpeedScale\" \"One\""
+    local speedmaster = "3.1";
+    -- local reset_speedscale = "Set Master " .. speedmaster .. " \"SpeedScale\" \"One\""
     local gma_set_bpm = "Master " .. speedmaster .. " BPM " .. bpm
 
 
@@ -36,7 +36,7 @@ local function Main(display_handle, argument)
     local maSuffix = ",f," .. resolume_bpm
     local rslm_set_bpm = "SendOSC " .. osc_patch .. " \"" .. osc_path .. maSuffix .. "\""
 
-    Cmd(reset_speedscale)
+    -- Cmd(reset_speedscale)
     Cmd(gma_set_bpm)
     Cmd(rslm_set_bpm)
 
