@@ -24,8 +24,6 @@ function Write-Log {
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     $logMessage = "[$timestamp] [$Type] $Message"
     
-    Write-Host $logMessage
-    
     if ($Type -eq "ERROR") {
         Write-Host $logMessage -ForegroundColor Red
     }
