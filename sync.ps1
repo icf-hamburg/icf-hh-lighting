@@ -163,7 +163,7 @@ if (Test-Path -Path $toConvertFolder) {
 # Get all video files in source folder (including subfolders)
 Write-Log "Scanning source folder for video files..." "INFO"
 $sourceFiles = Get-ChildItem -Path $SourceFolder -Recurse -File | Where-Object {
-    $_.Extension -match "\.(mp4|mov|avi|wmv|mkv|flv|webm|m4v)$"
+    $_.Extension -match "\.(mp4|mov|avi|wmv|mkv|flv|webm|m4v)$"}
 
     # Get all MOV files in destination folder
     # Write-Log "Scanning destination folder for MOV files..." "INFO"
