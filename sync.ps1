@@ -318,21 +318,20 @@ if ($WhatIf)
     Write-Log "Run without -WhatIf to perform the synchronization." "INFO"
 }
 
-}
-
-Write-Log "Found $($sourceFiles.Count) video files in source folder" "INFO"
+Write-Log "Found $( $sourceFiles.Count ) video files in source folder" "INFO"
 
 # Get all MOV files in destination folder
 Write-Log "Scanning destination folder for MOV files..." "INFO"
 $destFiles = Get-ChildItem -Path $DestinationFolder -Filter "*.mov" -File
 
-Write-Log "Found $($destFiles.Count) MOV files in destination folder" "INFO"
+Write-Log "Found $( $destFiles.Count ) MOV files in destination folder" "INFO"
 
 # Create hashtable of destination files for faster lookup
 $destFilesDict = @{
 }
-foreach ($file in $destFiles) {
-$destFilesDict[$file.Name] = $file
+foreach ($file in $destFiles)
+{
+    $destFilesDict[$file.Name] = $file
 }
 
 # Counter variables
@@ -340,91 +339,108 @@ $filesToConvert = 0
 $filesToDelete = 0
 
 # 1. Check for source files that need to be converted or updated
-foreach ($sourceFile in $sourceFiles) {
-$destFilename = Convert-ToDestinationFilename $sourceFile.Name
-$destFullPath = Join-Path -Path $DestinationFolder -ChildPath $destFilename
-$needsConversion = $false
+foreach ($sourceFile in $sourceFiles)
+{
+    $destFilename = Convert-ToDestinationFilename $sourceFile.Name
+    $destFullPath = Join-Path -Path $DestinationFolder -ChildPath $destFilename
+    $needsConversion = $false
 
-# Check if file exists in destination
-if (-not $destFilesDict.ContainsKey($destFilename)) {
-# File needs to be converted
-$filesToConvert++
-$needsConversion = $true
-$relativePath = Get-RelativePath -FullPath $sourceFile.FullName -BasePath $SourceFolder
-Write-Log "File needs conversion: $relativePath" "INFO"
-}
-else {
-# File exists, check if source file is newer
-$sourceFileDate = $sourceFile.LastWriteTime
-$destFileDate = $destFilesDict[$destFilename].LastWriteTime
+    # Check if file exists in destination
+    if (-not $destFilesDict.ContainsKey($destFilename))
+    {
+        # File needs to be converted
+        $filesToConvert++
+        $needsConversion = $true
+        $relativePath = Get-RelativePath -FullPath $sourceFile.FullName -BasePath $SourceFolder
+        Write-Log "File needs conversion: $relativePath" "INFO"
+    }
+    else
+    {
+        # File exists, check if source file is newer
+        $sourceFileDate = $sourceFile.LastWriteTime
+        $destFileDate = $destFilesDict[$destFilename].LastWriteTime
 
-if ($sourceFileDate -gt $destFileDate) {
-$filesToConvert++
-$needsConversion = $true
-Write-Log "File needs update (source is newer): $($sourceFile.Name)" "INFO"
-}
-else {
-if ($Verbose) {
-Write-Log "File is up to date: $($sourceFile.Name)" "INFO"
-}
-}
+        if ($sourceFileDate -gt $destFileDate)
+        {
+            $filesToConvert++
+            $needsConversion = $true
+            Write-Log "File needs update (source is newer): $( $sourceFile.Name )" "INFO"
+        }
+        else
+        {
+            if ($Verbose)
+            {
+                Write-Log "File is up to date: $( $sourceFile.Name )" "INFO"
+            }
+        }
 
-# Remove from the dictionary to keep track of extra files
-$destFilesDict.Remove($destFilename)
-}
+        # Remove from the dictionary to keep track of extra files
+        $destFilesDict.Remove($destFilename)
+    }
 
-# Create a link in the _TO_CONVERT folder if needed
-if ($needsConversion) {
-if ($WhatIf) {
-Write-Log "Would create link for $($sourceFile.Name) in _TO_CONVERT folder" "INFO"
-}
-else {
-try {
-$linkPath = New-ConversionLink -SourcePath $sourceFile.FullName -LinkFolder $toConvertFolder
-Write-Log "Created link for conversion: $linkPath" "SUCCESS"
-}
-catch {
-Write-Log "Error creating link: $($_.Exception.Message)" "ERROR"
-}
-}
-}
+    # Create a link in the _TO_CONVERT folder if needed
+    if ($needsConversion)
+    {
+        if ($WhatIf)
+        {
+            Write-Log "Would create link for $( $sourceFile.Name ) in _TO_CONVERT folder" "INFO"
+        }
+        else
+        {
+            try
+            {
+                $linkPath = New-ConversionLink -SourcePath $sourceFile.FullName -LinkFolder $toConvertFolder
+                Write-Log "Created link for conversion: $linkPath" "SUCCESS"
+            }
+            catch
+            {
+                Write-Log "Error creating link: $( $_.Exception.Message )" "ERROR"
+            }
+        }
+    }
 }
 
 # 2. Check for destination files that no longer have a source
-foreach ($destFile in $destFilesDict.Keys) {
-$filesToDelete++
-$destFullPath = Join-Path -Path $DestinationFolder -ChildPath $destFile
-Write-Log "File to be deleted (no longer in source): $destFullPath" "WARNING"
+foreach ($destFile in $destFilesDict.Keys)
+{
+    $filesToDelete++
+    $destFullPath = Join-Path -Path $DestinationFolder -ChildPath $destFile
+    Write-Log "File to be deleted (no longer in source): $destFullPath" "WARNING"
 
-if (-not $WhatIf) {
-try {
-Remove-Item -Path $destFullPath -Force
-Write-Log "Deleted: $destFile" "SUCCESS"
-}
-catch {
-Write-Log "Error deleting file: $($_.Exception.Message)" "ERROR"
-}
-}
+    if (-not $WhatIf)
+    {
+        try
+        {
+            Remove-Item -Path $destFullPath -Force
+            Write-Log "Deleted: $destFile" "SUCCESS"
+        }
+        catch
+        {
+            Write-Log "Error deleting file: $( $_.Exception.Message )" "ERROR"
+        }
+    }
 }
 
 # Summary
 Write-Log "===== Synchronization Summary =====" "INFO"
-Write-Log "MP4 files in source: $($sourceFiles.Count)" "INFO"
-Write-Log "MOV files in destination before sync: $($destFiles.Count)" "INFO"
+Write-Log "MP4 files in source: $( $sourceFiles.Count )" "INFO"
+Write-Log "MOV files in destination before sync: $( $destFiles.Count )" "INFO"
 Write-Log "Files to convert/update: $filesToConvert" "INFO"
 Write-Log "Files to delete: $filesToDelete" "INFO"
 
 $expectedFinalCount = $sourceFiles.Count
 Write-Log "Expected MOV files after sync: $expectedFinalCount" "INFO"
 
-if ($filesToConvert -gt 0) {
-Write-Log "Links to files requiring conversion have been placed in: $toConvertFolder" "WARNING"
-Write-Log "Please convert these files manually to MOV format and place them in: $DestinationFolder" "INFO"
+if ($filesToConvert -gt 0)
+{
+    Write-Log "Links to files requiring conversion have been placed in: $toConvertFolder" "WARNING"
+    Write-Log "Please convert these files manually to MOV format and place them in: $DestinationFolder" "INFO"
 }
 
-if ($WhatIf) {
-Write-Log "This was a dry run. No files were actually modified." "WARNING"
-Write-Log "Run without -WhatIf to perform the synchronization." "INFO"
+if ($WhatIf)
+{
+    Write-Log "This was a dry run. No files were actually modified." "WARNING"
+    Write-Log "Run without -WhatIf to perform the synchronization." "INFO"
 }
 
 Write-Log "===== Synchronization Complete =====" "SUCCESS"
