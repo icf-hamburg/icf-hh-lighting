@@ -166,10 +166,10 @@ $sourceFiles = Get-ChildItem -Path $SourceFolder -Recurse -File | Where-Object {
     $_.Extension -match "\.(mp4|mov|avi|wmv|mkv|flv|webm|m4v)$"
 
     # Get all MOV files in destination folder
-    Write-Log "Scanning destination folder for MOV files..." "INFO"
+    # Write-Log "Scanning destination folder for MOV files..." "INFO"
     $destFiles = Get-ChildItem -Path $DestinationFolder -Filter "*.mov" -File
 
-    Write-Log "Found $($destFiles.Count) MOV files in destination folder" "INFO"
+    # Write-Log "Found $($destFiles.Count) MOV files in destination folder" "INFO"
 
     # Create hashtable of destination files for faster lookup
     $destFilesDict = @{}
