@@ -236,16 +236,6 @@ $sourceFiles = Get-ChildItem -Path $SourceFolder -Recurse -File | Where-Object {
         }
     }
 
-    # Summary
-    Write-Log "===== Synchronization Summary =====" "INFO"
-    Write-Log "Video files in source: $($sourceFiles.Count)" "INFO"
-    Write-Log "MOV files in destination before sync: $($destFiles.Count)" "INFO"
-    Write-Log "Files to convert/update: $filesToConvert" "INFO"
-    Write-Log "Files identified for deletion: $filesToDelete" "INFO"
-
-    $expectedFinalCount = $sourceFiles.Count
-    Write-Log "Expected MOV files after sync: $expectedFinalCount" "INFO"
-
     if ($filesToConvert -gt 0) {
         Write-Log "Links to files requiring conversion have been placed in: $toConvertFolder" "WARNING"
         Write-Log "Please convert these files manually to MOV format and place them in: $DestinationFolder" "INFO"
@@ -255,8 +245,6 @@ $sourceFiles = Get-ChildItem -Path $SourceFolder -Recurse -File | Where-Object {
         Write-Log "This was a dry run. No files were actually modified." "WARNING"
         Write-Log "Run without -WhatIf to perform the synchronization." "INFO"
     }
-
-    Write-Log "===== Synchronization Complete =====" "SUCCESS"
 
 }
 
