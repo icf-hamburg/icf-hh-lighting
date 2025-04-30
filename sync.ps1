@@ -104,6 +104,32 @@ function New-ConversionLink {
     return $linkTarget
 }
 
+
+# Function to get relative path
+function Get-RelativePath {
+    param(
+        [string]$FullPath,
+        [string]$BasePath
+    )
+    
+    # Ensure paths have consistent format
+    $FullPath = $FullPath.Replace('/', '\')
+    $BasePath = $BasePath.Replace('/', '\')
+    
+    # Ensure base path ends with backslash
+    if (-not $BasePath.EndsWith('\')) {
+        $BasePath = "$BasePath\"
+    }
+    
+    # If the full path starts with the base path, remove it
+    if ($FullPath.StartsWith($BasePath, [StringComparison]::OrdinalIgnoreCase)) {
+        return $FullPath.Substring($BasePath.Length)
+    }
+    
+    # Otherwise return the full path
+    return $FullPath
+}
+
 # Validate folders exist
 if (-not (Test-Path -Path $SourceFolder -PathType Container)) {
     Write-Log "Source folder does not exist: $SourceFolder" "ERROR"
@@ -166,7 +192,8 @@ $sourceFiles = Get-ChildItem -Path $SourceFolder -Recurse -File | Where-Object {
             # File needs to be converted
             $filesToConvert++
             $needsConversion = $true
-            Write-Log "File needs conversion: $($sourceFile.FullName) → $destFullPath" "INFO"
+            $relativePath = Get-RelativePath -FullPath $sourceFile.FullName -BasePath $SourceFolder
+            Write-Log "File needs conversion: $relativePath" "INFO"
         }
         else {
             # File exists, check if source file is newer
@@ -277,7 +304,8 @@ foreach ($sourceFile in $sourceFiles) {
         # File needs to be converted
         $filesToConvert++
         $needsConversion = $true
-        Write-Log "File needs conversion: $($sourceFile.FullName) → $destFullPath" "INFO"
+        $relativePath = Get-RelativePath -FullPath $sourceFile.FullName -BasePath $SourceFolder
+        Write-Log "File needs conversion: $relativePath" "INFO"
     }
     else {
         # File exists, check if source file is newer
