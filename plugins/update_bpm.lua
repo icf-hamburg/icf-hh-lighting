@@ -10,6 +10,29 @@ local function displayError(msg)
 end
 
 
+local function setBpmScaled(bpm, master)
+    local speedmaster = GetObject("Master " .. master)
+    local scale = speedmaster.Speedscale
+
+    local sign = 0
+    if scale < 0 then
+        sign = -1
+    elseif scale > 0 then
+        sign = 1
+    end
+
+    local factored = 2 ^ math.abs(scale)
+
+    local targetBpm = bpm
+    if sign == 1 then
+        targetBpm = bpm * factored
+    elseif sign == -1 then
+        targetBpm = bpm / factored
+    end
+
+    Cmd("Master " .. master .. " BPM " .. targetBpm)
+end
+
 local function Main(display_handle, argument)
 
     local osc_patch = 3;
@@ -37,7 +60,7 @@ local function Main(display_handle, argument)
     local rslm_set_bpm = "SendOSC " .. osc_patch .. " \"" .. osc_path .. maSuffix .. "\""
 
     -- Cmd(reset_speedscale)
-    Cmd(gma_set_bpm)
+    setBpmScaled(bpm, speedmaster)
     Cmd(rslm_set_bpm)
 
 end
