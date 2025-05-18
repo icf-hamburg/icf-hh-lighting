@@ -63,6 +63,8 @@ local function Main(display_handle, argument)
     setBpmScaled(bpm, speedmaster)
     Cmd(rslm_set_bpm)
 
+    Cmd("Call Macro \"Post SetBPM\"")
+
 end
 
 return Main
