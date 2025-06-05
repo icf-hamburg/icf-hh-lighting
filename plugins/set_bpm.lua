@@ -41,8 +41,7 @@ local function Main(display_handle, argument)
     local bpm = argument;
 
     if bpm == nil then
-        displayError("BPM Argument fehlt.")
-        return
+        bpm = TextInput("Enter BPM", "")
     end
 
     local speedmaster = "3.1";
@@ -61,7 +60,7 @@ local function Main(display_handle, argument)
 
     -- Cmd(reset_speedscale)
     setBpmScaled(bpm, speedmaster)
-    Cmd(rslm_set_bpm)
+    -- Cmd(rslm_set_bpm)
 
     Cmd("Call Macro \"Post SetBPM\"")
 
