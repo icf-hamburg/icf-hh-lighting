@@ -45,8 +45,9 @@ local function Main(display_handle, argument)
     end
 
     local speedmaster = "3.1";
+    local speedmasterMetronome = "3.10";
     -- local reset_speedscale = "Set Master " .. speedmaster .. " \"SpeedScale\" \"One\""
-    local gma_set_bpm = "Master " .. speedmaster .. " BPM " .. bpm
+    local gma_set_bpm_metronome = "Master " .. speedmasterMetronome .. " BPM " .. bpm
 
 
     local resolume_bpm = (bpm - 20) / 480;
@@ -61,6 +62,7 @@ local function Main(display_handle, argument)
     -- Cmd(reset_speedscale)
     setBpmScaled(bpm, speedmaster)
     -- Cmd(rslm_set_bpm)
+    Cmd(gma_set_bpm_metronome)
 
     Cmd("Call Macro \"Post SetBPM\"")
 
