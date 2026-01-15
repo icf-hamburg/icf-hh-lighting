@@ -28,8 +28,8 @@ def create_dmx_channel(offset, highlight, geometry, led_num, attribute):
     if attribute == "Dimmer":
         func.set("Default", "0/4")
         func.set("DMXFrom", "0/4")
-        dmx_values = ["0/4", "-255/4", "0/4", "4294967040/4", "4294967295/4"]
-        names = ["Min", "", "", "", "Max"]
+        dmx_values = ["0/4", "1/4", "4294967295/4"]
+        names = ["Min", "", "Max"]
     else:
         func.set("Default", "255/1")
         func.set("DMXFrom", "0/1")
