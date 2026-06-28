@@ -115,7 +115,7 @@ function Get-DefaultTargetRoot {
 # --- resolve source root for the current OS unless supplied -----------------
 if (-not $SourceRoot) {
     if ($IsWindows) {
-        $SourceRoot = 'C:\Program Files\MALightingTechnology'
+        $SourceRoot = 'C:\ProgramData\MALightingTechnology'
     } else {
         # macOS / Linux.
         $SourceRoot = Join-Path $HOME 'MALightingTechnology'
