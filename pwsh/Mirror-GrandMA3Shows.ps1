@@ -76,14 +76,22 @@ function Get-DefaultTargetRoot {
     $candidates = @()
 
     if ($IsWindows) {
-        # Google Drive for Desktop usually mounts a virtual drive whose root
-        # contains a "My Drive" folder. Scan all filesystem drives for it,
-        # then fall back to the classic locations under the user profile.
+        # 1. Most reliable: Google Drive for Desktop mounts a virtual drive whose
+        #    volume label is "Google Drive", regardless of the assigned letter.
+        Get-CimInstance Win32_LogicalDisk -ErrorAction SilentlyContinue |
+            Where-Object { $_.VolumeName -eq 'Google Drive' } |
+            ForEach-Object { $candidates += (Join-Path $_.DeviceID 'My Drive') }
+
+        # 2. Otherwise scan every filesystem drive root for a "My Drive" folder
+        #    (covers odd setups the label match misses).
         foreach ($d in (Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue)) {
             $candidates += (Join-Path $d.Root 'My Drive')
         }
+
+        # 3. Folder-mount / legacy "Backup and Sync" locations under the profile.
         $candidates += (Join-Path $HOME 'My Drive')
         $candidates += (Join-Path $HOME 'Google Drive')
+        $candidates += (Join-Path $HOME 'Drive')
     }
     else {
         # macOS (and Linux fallback).
